@@ -15529,11 +15529,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Clara\\Desktop\\Github\\Playwright_training\\PlaywrightTests\\PlaywrightTests.csproj",
+      "projectUniqueName": "C:\\Users\\Clara\\Desktop\\Github\\Nueva\\Playwright_training\\PlaywrightTests\\PlaywrightTests.csproj",
       "projectName": "PlaywrightTests",
-      "projectPath": "C:\\Users\\Clara\\Desktop\\Github\\Playwright_training\\PlaywrightTests\\PlaywrightTests.csproj",
+      "projectPath": "C:\\Users\\Clara\\Desktop\\Github\\Nueva\\Playwright_training\\PlaywrightTests\\PlaywrightTests.csproj",
       "packagesPath": "C:\\Users\\Clara\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Clara\\Desktop\\Github\\Playwright_training\\PlaywrightTests\\obj\\",
+      "outputPath": "C:\\Users\\Clara\\Desktop\\Github\\Nueva\\Playwright_training\\PlaywrightTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

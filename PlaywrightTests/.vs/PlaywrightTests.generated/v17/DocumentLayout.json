@@ -1,18 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Clara\\Desktop\\Github\\Playwright_training\\PlaywrightTests\\",
+  "WorkspaceRootPath": "C:\\Users\\Clara\\Desktop\\Github\\Nueva\\Playwright_training\\PlaywrightTests\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3C953C81-948F-48B8-995E-17891DC788A9}|PlaywrightTests.csproj|c:\\users\\clara\\desktop\\github\\playwright_training\\playwrighttests\\testcontainers\\pulsartestcontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C953C81-948F-48B8-995E-17891DC788A9}|PlaywrightTests.csproj|solutionrelative:testcontainers\\pulsartestcontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3C953C81-948F-48B8-995E-17891DC788A9}|PlaywrightTests.csproj|c:\\users\\clara\\desktop\\github\\nueva\\playwright_training\\playwrighttests\\steps\\rabbitmqsteps.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C953C81-948F-48B8-995E-17891DC788A9}|PlaywrightTests.csproj|solutionrelative:steps\\rabbitmqsteps.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3C953C81-948F-48B8-995E-17891DC788A9}|PlaywrightTests.csproj|c:\\users\\clara\\desktop\\github\\playwright_training\\playwrighttests\\testcontainers\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3C953C81-948F-48B8-995E-17891DC788A9}|PlaywrightTests.csproj|c:\\users\\clara\\desktop\\github\\nueva\\playwright_training\\playwrighttests\\steps\\pulsarsteps.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C953C81-948F-48B8-995E-17891DC788A9}|PlaywrightTests.csproj|solutionrelative:steps\\pulsarsteps.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C953C81-948F-48B8-995E-17891DC788A9}|PlaywrightTests.csproj|c:\\users\\clara\\desktop\\github\\nueva\\playwright_training\\playwrighttests\\steps\\mysqlstep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C953C81-948F-48B8-995E-17891DC788A9}|PlaywrightTests.csproj|solutionrelative:steps\\mysqlstep.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C953C81-948F-48B8-995E-17891DC788A9}|PlaywrightTests.csproj|c:\\users\\clara\\desktop\\github\\nueva\\playwright_training\\playwrighttests\\testcontainers\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3C953C81-948F-48B8-995E-17891DC788A9}|PlaywrightTests.csproj|solutionrelative:testcontainers\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3C953C81-948F-48B8-995E-17891DC788A9}|PlaywrightTests.csproj|c:\\users\\clara\\desktop\\github\\playwright_training\\playwrighttests\\testcontainers\\rabbitmqtestcontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C953C81-948F-48B8-995E-17891DC788A9}|PlaywrightTests.csproj|solutionrelative:testcontainers\\rabbitmqtestcontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RabbitMQTestContainer.cs",
-              "DocumentMoniker": "C:\\Users\\Clara\\Desktop\\Github\\Playwright_training\\PlaywrightTests\\TestContainers\\RabbitMQTestContainer.cs",
-              "RelativeDocumentMoniker": "TestContainers\\RabbitMQTestContainer.cs",
-              "ToolTip": "C:\\Users\\Clara\\Desktop\\Github\\Playwright_training\\PlaywrightTests\\TestContainers\\RabbitMQTestContainer.cs",
-              "RelativeToolTip": "TestContainers\\RabbitMQTestContainer.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAA2wF0AAAALAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "PulsarSteps.cs",
+              "DocumentMoniker": "C:\\Users\\Clara\\Desktop\\Github\\Nueva\\Playwright_training\\PlaywrightTests\\Steps\\PulsarSteps.cs",
+              "RelativeDocumentMoniker": "Steps\\PulsarSteps.cs",
+              "ToolTip": "C:\\Users\\Clara\\Desktop\\Github\\Nueva\\Playwright_training\\PlaywrightTests\\Steps\\PulsarSteps.cs",
+              "RelativeToolTip": "Steps\\PulsarSteps.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T14:17:29.381Z",
+              "WhenOpened": "2024-10-24T10:19:15.706Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Config.cs",
-              "DocumentMoniker": "C:\\Users\\Clara\\Desktop\\Github\\Playwright_training\\PlaywrightTests\\TestContainers\\Config.cs",
-              "RelativeDocumentMoniker": "TestContainers\\Config.cs",
-              "ToolTip": "C:\\Users\\Clara\\Desktop\\Github\\Playwright_training\\PlaywrightTests\\TestContainers\\Config.cs",
-              "RelativeToolTip": "TestContainers\\Config.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAswFgAAAAaAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "MySQLStep.cs",
+              "DocumentMoniker": "C:\\Users\\Clara\\Desktop\\Github\\Nueva\\Playwright_training\\PlaywrightTests\\Steps\\MySQLStep.cs",
+              "RelativeDocumentMoniker": "Steps\\MySQLStep.cs",
+              "ToolTip": "C:\\Users\\Clara\\Desktop\\Github\\Nueva\\Playwright_training\\PlaywrightTests\\Steps\\MySQLStep.cs",
+              "RelativeToolTip": "Steps\\MySQLStep.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T14:14:14.839Z",
+              "WhenOpened": "2024-10-24T10:18:52.212Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Config.cs",
+              "DocumentMoniker": "C:\\Users\\Clara\\Desktop\\Github\\Nueva\\Playwright_training\\PlaywrightTests\\TestContainers\\Config.cs",
+              "RelativeDocumentMoniker": "TestContainers\\Config.cs",
+              "ToolTip": "C:\\Users\\Clara\\Desktop\\Github\\Nueva\\Playwright_training\\PlaywrightTests\\TestContainers\\Config.cs",
+              "RelativeToolTip": "TestContainers\\Config.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T10:18:43.583Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PulsarTestContainer.cs",
-              "DocumentMoniker": "C:\\Users\\Clara\\Desktop\\Github\\Playwright_training\\PlaywrightTests\\TestContainers\\PulsarTestContainer.cs",
-              "RelativeDocumentMoniker": "TestContainers\\PulsarTestContainer.cs",
-              "ToolTip": "C:\\Users\\Clara\\Desktop\\Github\\Playwright_training\\PlaywrightTests\\TestContainers\\PulsarTestContainer.cs",
-              "RelativeToolTip": "TestContainers\\PulsarTestContainer.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAqwCkAAABFAAAAAAAAAA==",
+              "Title": "RabbitMQSteps.cs",
+              "DocumentMoniker": "C:\\Users\\Clara\\Desktop\\Github\\Nueva\\Playwright_training\\PlaywrightTests\\Steps\\RabbitMQSteps.cs",
+              "RelativeDocumentMoniker": "Steps\\RabbitMQSteps.cs",
+              "ToolTip": "C:\\Users\\Clara\\Desktop\\Github\\Nueva\\Playwright_training\\PlaywrightTests\\Steps\\RabbitMQSteps.cs",
+              "RelativeToolTip": "Steps\\RabbitMQSteps.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-17T14:10:44.386Z",
+              "WhenOpened": "2024-10-24T10:17:42.881Z",
               "EditorCaption": ""
             }
           ]
