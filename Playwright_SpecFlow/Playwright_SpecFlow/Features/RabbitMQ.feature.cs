@@ -107,8 +107,7 @@ namespace Playwright_SpecFlow.Features
     testRunner.Given("a RabbitMQ producer is running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 6
-    testRunner.When("the producer send a message with content \'{\"type\": \"simple\", \"content\": \"Hello, W" +
-                        "orld\"}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("the producer send a simple message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
     testRunner.Then("the consumer should receive a message with the same content and structure", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

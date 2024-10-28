@@ -1,4 +1,5 @@
 using Playwright_SpecFlow.TestContainers;
+using Playwright_SpecFlow.Hooks;
 using RabbitMQ.Client;
 using System;
 using TechTalk.SpecFlow;
@@ -7,27 +8,48 @@ namespace Playwright_SpecFlow.StepDefinitions
 {
     [Binding]
     public class RabbitMQTestsSteps
-
     {
+        private RabbitMQSetup _rabbitMqSetup;
+        private RabbitMQConsumer _rabbitMqConsumer;
+        private RabbitMQProducer _rabbitMqProducer;
+        private RabbitMQTestContainer _rabbitMqTest;
+        private readonly ScenarioContext _scenarioContext;
 
-        Config _rabbitMqContainer = new Config();
-        RabbitMQProducerConsumer _rabbitMq = new RabbitMQProducerConsumer();
-
+        public RabbitMQTestsSteps(ScenarioContext scenarioContext)
+        {
+            _scenarioContext = scenarioContext;
+        }
         [Given(@"a RabbitMQ producer is running")]
         public async Task GivenARabbitMQProducerIsRunning()
         {
-            await _rabbitMqContainer.RabbitMqContainerSetup();
+            //Set container
+            _rabbitMqSetup = new RabbitMQSetup();
+            await _rabbitMqSetup.RabbitMqContainerSetup();
+            //Set Producer/Consumer
+            _rabbitMqConsumer = new RabbitMQConsumer(_rabbitMqSetup.Channel);
+            _rabbitMqProducer = new RabbitMQProducer(_rabbitMqSetup.Channel);
+
+            _rabbitMqTest = new RabbitMQTestContainer();
+
+        }
+        [When(@"the producer send a simple message")]
+        public void WhenTheProducerSendASimpleMessage()
+        {
+            _rabbitMqTest.SendSimpleMessage();
+        }
+        [When(@"the producer send a message with content '([^']*)'")]
+        public void WhenISendAMessageWithContent(string p0)
+        {
+            //  _rabbitMqTest.SendSimpleMessage();
+            //   _rabbitMqTest.SendListMessage();
+            //  _rabbitMqTest.SendComplexMessage();
+
         }
 
-        [When(@"the producer send a message with content '([^']*)'")]
-        public async Task WhenISendAMessageWithContent(string p0)
-        {
-            await _rabbitMq.ProduceMessage("Hola mundo");
-        }
         [Then(@"the consumer should receive a message with the same content and structure")]
-        public async Task ThenIShouldReceiveAMessageWithTheSameContentAndStructure()
+        public void ThenIShouldReceiveAMessageWithTheSameContentAndStructure()
         {
-            throw new PendingStepException();
+            _rabbitMqTest.RecievedSimpleMessage("Hola World!");
         }
 
         [Then(@"the consumer should receive a message with the expected list elements")]
@@ -37,3 +59,4 @@ namespace Playwright_SpecFlow.StepDefinitions
         }
     }
 }
+
