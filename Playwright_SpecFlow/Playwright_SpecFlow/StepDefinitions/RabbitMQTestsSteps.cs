@@ -22,20 +22,17 @@ namespace Playwright_SpecFlow.StepDefinitions
         [Given(@"a RabbitMQ producer is running")]
         public async Task GivenARabbitMQProducerIsRunning()
         {
-            //Set container
-            _rabbitMqSetup = new RabbitMQSetup();
-            await _rabbitMqSetup.RabbitMqContainerSetup();
+
             //Set Producer/Consumer
             _rabbitMqConsumer = new RabbitMQConsumer(_rabbitMqSetup.Channel);
             _rabbitMqProducer = new RabbitMQProducer(_rabbitMqSetup.Channel);
-
-            _rabbitMqTest = new RabbitMQTestContainer();
 
         }
         [When(@"the producer send a simple message")]
         public void WhenTheProducerSendASimpleMessage()
         {
-            _rabbitMqTest.SendSimpleMessage();
+            var message = "Hello World";
+            _rabbitMqProducer.ProduceMessage(message);
         }
         [When(@"the producer send a message with content '([^']*)'")]
         public void WhenISendAMessageWithContent(string p0)
