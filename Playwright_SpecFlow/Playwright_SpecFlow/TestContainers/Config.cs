@@ -68,14 +68,13 @@ namespace Playwright_SpecFlow.TestContainers
 
         public async Task PulsarContainerSetup()
         {
-            _pulsarContainer = new ContainerBuilder()
-        .WithImage("apachepulsar/pulsar:latest")
-        .WithPortBinding(6650, 6650)   
-        .WithWaitStrategy(Wait.ForUnixContainer()
-        .UntilPortIsAvailable(6650))
-        .WithCommand("/bin/bash", "-c", "bin/pulsar standalone")
-        // .WithCommand("/bin/bash", "-c", "bin/pulsar-admin namespaces create public/default")
-        .Build();
+         _pulsarContainer = new ContainerBuilder()
+            .WithImage("apachepulsar/pulsar:latest")
+            .WithPortBinding(6650, 6650)   
+            .WithWaitStrategy(Wait.ForUnixContainer()
+            .UntilPortIsAvailable(6650))
+            .WithCommand("/bin/bash", "-c", "bin/pulsar standalone")
+            .Build();
 
             await _pulsarContainer.StartAsync();
             await _pulsarContainer.ExecAsync(new[] { "/bin/bash", "-c", "bin/pulsar-admin namespaces create public/default" });

@@ -6,7 +6,7 @@ Feature: RabbitMQ Producer and Consumer Tests
     When the producer send a simple message
     Then the consumer should receive a message with the same content and structure
 
-  Scenario: Produce and consume a complex message
+ Scenario: Produce and consume a complex message
     Given a RabbitMQ producer is running
     When the producer send a message with content '{"type": "complex", "content": {"text": "Hello", "number": 123}}'
     Then the consumer should receive a message with the same content and structure

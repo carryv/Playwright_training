@@ -1,3 +1,6 @@
+using NUnit.Framework;
+using Playwright_SpecFlow.Hooks;
+using Playwright_SpecFlow.TestContainers;
 using System;
 using TechTalk.SpecFlow;
 
@@ -6,22 +9,34 @@ namespace Playwright_SpecFlow.StepDefinitions
     [Binding]
     public class PulsarTestsSteps
     {
-        [When(@"I send a message with content '([^']*)'")]
-        public async Task WhenISendAMessageWithContent(string p0)
+
+        private readonly ScenarioContext _scenarioContext;
+
+        PulsarProducerConsumer _pulsarSetup = new PulsarProducerConsumer();
+
+        [Given(@"a Pulsar producer is running")]
+        public async Task GivenAPulsarProducerIsRunning()
         {
-            throw new PendingStepException();
+            await _pulsarSetup.SetupPulsar();
+            await _pulsarSetup.ProduceConsumer();
         }
 
-        [Then(@"I should receive a message with the same content and structure")]
-        public async Task ThenIShouldReceiveAMessageWithTheSameContentAndStructure()
+        [When(@"send a simple message")]
+        public async Task WhenSendASimpleMessage()
         {
-            throw new PendingStepException();
+            await _pulsarSetup.ProduceMessage();
+
+           
         }
 
-        [Then(@"I should receive a message with the expected list elements")]
-        public async Task ThenIShouldReceiveAMessageWithTheExpectedListElements()
+        [Then(@"the consumer should receive a message")]
+        public async Task ThenTheConsumerShouldReceiveAMessage()
         {
-            throw new PendingStepException();
+            await _pulsarSetup.ConsumeMessage();
+            Console.WriteLine("receivedMessage");
+
+
+
         }
     }
 }
