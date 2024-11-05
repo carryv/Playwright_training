@@ -15,17 +15,20 @@ namespace Playwright_SpecFlow.StepDefinitions
         private RabbitMQTestContainer _rabbitMqTest;
         private readonly ScenarioContext _scenarioContext;
 
-        public RabbitMQTestsSteps(ScenarioContext scenarioContext)
+        public RabbitMQTestsSteps(ScenarioContext scenarioContext,RabbitMQSetup rabbitMQSetup)
         {
             _scenarioContext = scenarioContext;
+            _rabbitMqSetup = rabbitMQSetup;
+
         }
         [Given(@"a RabbitMQ producer is running")]
         public async Task GivenARabbitMQProducerIsRunning()
         {
+            IModel _channel = _rabbitMqSetup.Channel;
 
             //Set Producer/Consumer
-            _rabbitMqConsumer = new RabbitMQConsumer(_rabbitMqSetup.Channel);
-            _rabbitMqProducer = new RabbitMQProducer(_rabbitMqSetup.Channel);
+            _rabbitMqConsumer = new RabbitMQConsumer(_channel);
+            _rabbitMqProducer = new RabbitMQProducer(_channel);
 
         }
         [When(@"the producer send a simple message")]
@@ -46,7 +49,8 @@ namespace Playwright_SpecFlow.StepDefinitions
         [Then(@"the consumer should receive a message with the same content and structure")]
         public void ThenIShouldReceiveAMessageWithTheSameContentAndStructure()
         {
-            _rabbitMqTest.RecievedSimpleMessage("Hola World!");
+            var msg = _rabbitMqConsumer.ConsumeMessage();
+            Console.WriteLine(msg);
         }
 
         [Then(@"the consumer should receive a message with the expected list elements")]

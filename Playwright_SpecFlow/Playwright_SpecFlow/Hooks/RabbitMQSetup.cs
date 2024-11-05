@@ -4,7 +4,7 @@ using Testcontainers.RabbitMq;
 
 namespace Playwright_SpecFlow.Hooks
 {
-    public class RabbitMQSetup
+    public sealed class RabbitMQSetup
     {
         public RabbitMqContainer RabbitMqContainer { get; private set; }
         public IConnection Connection { get; private set; }

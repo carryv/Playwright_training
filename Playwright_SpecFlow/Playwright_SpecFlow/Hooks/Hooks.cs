@@ -1,6 +1,5 @@
-﻿
-
-using Playwright_SpecFlow.TestContainers;
+﻿using Playwright_SpecFlow.TestContainers;
+using Testcontainers.RabbitMq;
 
 namespace Playwright_SpecFlow.Hooks
 {
@@ -8,21 +7,26 @@ namespace Playwright_SpecFlow.Hooks
     [Binding]
     public sealed class Hooks
     {
+    
         private RabbitMQSetup _rabbitMqSetup;
         private RabbitMQTestContainer _rabbitMqTest;
         private ScenarioContext _scenarioContext;
 
 
+        public Hooks(RabbitMQSetup rabbitMqSetup) : base()
+        {
+            _rabbitMqSetup=rabbitMqSetup;
+        }
+
         [Before]
         public async Task setupContainer()
         {
             //Set container
-            _rabbitMqSetup = new RabbitMQSetup();
             await _rabbitMqSetup.RabbitMqContainerSetup();
 
         }
 
-       // [After]
+     //   [After]
 
     }
 }
