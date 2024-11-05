@@ -70,6 +70,7 @@ namespace Playwright_SpecFlow.TestContainers
         {
          _pulsarContainer = new ContainerBuilder()
             .WithImage("apachepulsar/pulsar:latest")
+            .WithName("pulsar-test-container")
             .WithPortBinding(6650, 6650)   
             .WithWaitStrategy(Wait.ForUnixContainer()
             .UntilPortIsAvailable(6650))

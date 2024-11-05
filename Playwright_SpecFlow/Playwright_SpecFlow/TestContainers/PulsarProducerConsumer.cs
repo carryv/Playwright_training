@@ -28,8 +28,6 @@ namespace Playwright_SpecFlow.TestContainers
 
         public async Task ProduceConsumer()
         {
-
-            Console.WriteLine(_client.ServiceUrl);
             _client = PulsarClient.Builder()
                     .ServiceUrl(new Uri(_config.ServiceUrl))
                     .Build();
@@ -55,8 +53,9 @@ namespace Playwright_SpecFlow.TestContainers
             var messageProd = new ReadOnlySequence<byte>(Encoding.UTF8.GetBytes("{\"type\": \"simple\", \"content\": \"Hello, Pulsar World\"}"));
 
             await _producer.Send(messageProd);
+            Console.WriteLine("Message enviado:" + messageProd);
             await _producer.DisposeAsync();
-
+            
         }
 
         public async Task<string> ConsumeMessage()
@@ -64,6 +63,7 @@ namespace Playwright_SpecFlow.TestContainers
             var message = await _consumer.Receive();
             var byteArray = message.Data.ToArray();
             var receivedMessage = Encoding.UTF8.GetString(byteArray);
+            Console.WriteLine("Message received:" + receivedMessage);
             await _consumer.Acknowledge(message);
             await _consumer.DisposeAsync();
             return receivedMessage;
