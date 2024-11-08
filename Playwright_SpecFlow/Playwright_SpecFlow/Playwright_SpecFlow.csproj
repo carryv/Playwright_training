@@ -4,7 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-	 <ParallelizeTestCollections>true</ParallelizeTestCollections>
+	<ParallelizeTestCollections>true</ParallelizeTestCollections>
+	<ParallelScope>All</ParallelScope>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,10 +39,6 @@
     <PackageReference Include="Testcontainers.Pulsar" Version="3.10.0" />
     <PackageReference Include="Testcontainers.RabbitMq" Version="3.10.0" />
     <PackageReference Include="WireMock.Net" Version="1.6.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Support\" />
   </ItemGroup>
 
   <ItemGroup>

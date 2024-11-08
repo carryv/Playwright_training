@@ -82,12 +82,12 @@ namespace Playwright_SpecFlow.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate each question has 3 incorrect answers")]
-        public async System.Threading.Tasks.Task ValidateEachQuestionHas3IncorrectAnswers()
+        [NUnit.Framework.DescriptionAttribute("Validate Incorrect answers")]
+        public async System.Threading.Tasks.Task ValidateIncorrectAnswers()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Validate each question has 3 incorrect answers", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Validate Incorrect answers", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 3
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -99,14 +99,14 @@ namespace Playwright_SpecFlow.Features
             {
                 await this.ScenarioStartAsync();
 #line 4
-    await testRunner.GivenAsync("User send a request to \"https://opentdb.com/api.php?amount=50&category=21&difficu" +
-                        "lty=medium&type=multiple\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+    await testRunner.GivenAsync("User sends a request to \"https://opentdb.com/api.php?amount=50&category=21&diffic" +
+                        "ulty=medium&type=multiple\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 5
-    await testRunner.WhenAsync("User receive the incurrect response", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+    await testRunner.WhenAsync("User receives the API response", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 6
-    await testRunner.ThenAsync("each question should have exactly 3 incorrect answers", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.ThenAsync("each question should have exactly three incorrect answers", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
 #line 7
     await testRunner.AndAsync("extract and print \"correct_answer\" for the question \"Which car manufacturer won t" +
