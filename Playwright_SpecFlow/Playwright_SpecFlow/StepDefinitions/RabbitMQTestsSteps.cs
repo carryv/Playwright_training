@@ -3,6 +3,7 @@ using Playwright_SpecFlow.Hooks;
 using RabbitMQ.Client;
 using System;
 using TechTalk.SpecFlow;
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.ObjectModel;
 
 namespace Playwright_SpecFlow.StepDefinitions
 {
@@ -12,10 +13,9 @@ namespace Playwright_SpecFlow.StepDefinitions
         private RabbitMQSetup _rabbitMqSetup;
         private RabbitMQConsumer _rabbitMqConsumer;
         private RabbitMQProducer _rabbitMqProducer;
-        private RabbitMQTestContainer _rabbitMqTest;
         private readonly ScenarioContext _scenarioContext;
 
-        public RabbitMQTestsSteps(ScenarioContext scenarioContext,RabbitMQSetup rabbitMQSetup)
+        public RabbitMQTestsSteps(ScenarioContext scenarioContext, RabbitMQSetup rabbitMQSetup)
         {
             _scenarioContext = scenarioContext;
             _rabbitMqSetup = rabbitMQSetup;
@@ -34,16 +34,8 @@ namespace Playwright_SpecFlow.StepDefinitions
         [When(@"the producer send a simple message")]
         public void WhenTheProducerSendASimpleMessage()
         {
-            var message = "Hello World";
-            _rabbitMqProducer.ProduceMessage(message);
-        }
-        [When(@"the producer send a message with content '([^']*)'")]
-        public void WhenISendAMessageWithContent(string p0)
-        {
-            //  _rabbitMqTest.SendSimpleMessage();
-            //   _rabbitMqTest.SendListMessage();
-            //  _rabbitMqTest.SendComplexMessage();
-
+            var simpleContent = "Hello, World";
+            _rabbitMqProducer.ProduceMessage("simple", simpleContent);
         }
 
         [Then(@"the consumer should receive a message with the same content and structure")]
@@ -53,11 +45,22 @@ namespace Playwright_SpecFlow.StepDefinitions
             Console.WriteLine(msg);
         }
 
-        [Then(@"the consumer should receive a message with the expected list elements")]
-        public async Task ThenIShouldReceiveAMessageWithTheExpectedListElements()
+        [When(@"the producer sends a complex message'")]
+        public void WhenTheProducerSendsAComplexMessage()
         {
-            throw new PendingStepException();
+            var complexContent = new { text = "Hello", number = 123 };
+            _rabbitMqProducer.ProduceMessage("complex", complexContent);
         }
+
+        [When(@"the producer sends a list message'")]
+        public void WhenTheProducerSendsAListMessage()
+        {
+            var listContent = new[] { "item1", "item2", "item3" };
+            _rabbitMqProducer.ProduceMessage("list", listContent);
+        }
+
+
+
     }
 }
 

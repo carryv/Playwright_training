@@ -21,22 +21,34 @@ namespace Playwright_SpecFlow.StepDefinitions
             await _pulsarSetup.ProduceConsumer();
         }
 
-        [When(@"send a simple message")]
-        public async Task WhenSendASimpleMessage()
-        {
-            await _pulsarSetup.ProduceMessage();
 
-           
+        [When(@"Pulsar producer send a simple message")]
+        public async Task WhenPulsarProducerSendASimpleMessage()
+        {
+            var PulsarSimpleContent = "Hello, Pulsar World";
+            await _pulsarSetup.ProduceMessage("simple", PulsarSimpleContent);
         }
 
-        [Then(@"the consumer should receive a message")]
-        public async Task ThenTheConsumerShouldReceiveAMessage()
+        [Then(@"Pulsar consumer should receive a message")]
+        public async Task ThenPulsarConsumerShouldReceiveAMessage()
         {
             await _pulsarSetup.ConsumeMessage();
-            Console.WriteLine("receivedMessage");
-
-
-
+           // Console.WriteLine("receivedMessage");
         }
+
+        [When(@"Pulsar producer send a complex message'")]
+        public async Task WhenPulsarProducerSendAComplexMessage()
+        {
+            var PulsarComplexContent = new { text = "Hello Pulsar", number = 123 };
+            await _pulsarSetup.ProduceMessage("complex", PulsarComplexContent);
+        }
+
+        [When(@"Pulsar producer send a list message'")]
+        public async Task WhenPulsarProducerSendAListMessage()
+        {
+            var PulsarListContent = new[] { "item1", "item2", "item3" };
+            await _pulsarSetup.ProduceMessage("list", PulsarListContent);
+        }
+
     }
 }

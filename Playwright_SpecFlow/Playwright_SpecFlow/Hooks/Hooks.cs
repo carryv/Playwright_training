@@ -9,7 +9,6 @@ namespace Playwright_SpecFlow.Hooks
     {
     
         private RabbitMQSetup _rabbitMqSetup;
-        private RabbitMQTestContainer _rabbitMqTest;
         private ScenarioContext _scenarioContext;
 
 

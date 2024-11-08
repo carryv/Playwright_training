@@ -147,8 +147,7 @@ namespace Playwright_SpecFlow.Features
     testRunner.Given("a RabbitMQ producer is running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 11
-    testRunner.When("the producer send a message with content \'{\"type\": \"complex\", \"content\": {\"text\":" +
-                        " \"Hello\", \"number\": 123}}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("the producer sends a complex message\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 12
     testRunner.Then("the consumer should receive a message with the same content and structure", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -188,11 +187,10 @@ namespace Playwright_SpecFlow.Features
     testRunner.Given("a RabbitMQ producer is running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 16
-    testRunner.When("the producer send a message with content \'{\"type\": \"list\", \"content\": [\"item1\", \"" +
-                        "item2\", \"item3\"]}\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("the producer sends a list message\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 17
-    testRunner.Then("the consumer should receive a message with the expected list elements", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("the consumer should receive a message with the same content and structure", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
