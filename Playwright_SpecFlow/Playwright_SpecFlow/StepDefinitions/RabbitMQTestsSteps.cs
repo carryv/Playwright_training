@@ -2,7 +2,7 @@ using Playwright_SpecFlow.TestContainers;
 using Playwright_SpecFlow.Hooks;
 using RabbitMQ.Client;
 using System;
-using TechTalk.SpecFlow;
+using Reqnroll;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.ObjectModel;
 
 namespace Playwright_SpecFlow.StepDefinitions

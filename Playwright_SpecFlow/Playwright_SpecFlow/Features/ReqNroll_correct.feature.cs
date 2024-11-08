@@ -20,19 +20,17 @@ namespace Playwright_SpecFlow.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("DatabaseContainer")]
-    [NUnit.Framework.CategoryAttribute("MySQL_test")]
-    public partial class DatabaseContainerFeature
+    [NUnit.Framework.DescriptionAttribute("Validate True Answers")]
+    public partial class ValidateTrueAnswersFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
-        private static string[] featureTags = new string[] {
-                "MySQL_test"};
+        private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "DatabaseContainer", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Validate True Answers", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
-#line 1 "MySQL.feature"
+#line 1 "ReqNroll_correct.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
@@ -84,14 +82,14 @@ namespace Playwright_SpecFlow.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("DatabaseContainer")]
-        public async System.Threading.Tasks.Task DatabaseContainer()
+        [NUnit.Framework.DescriptionAttribute("Validate that \"correct_answer\": \"True\" exists")]
+        public async System.Threading.Tasks.Task ValidateThatCorrect_AnswerTrueExists()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("DatabaseContainer", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 4
-this.ScenarioInitialize(scenarioInfo);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Validate that \"correct_answer\": \"True\" exists", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 3
+  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -100,11 +98,18 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
+#line 4
+    await testRunner.GivenAsync("User send a request to \"https://opentdb.com/api.php?amount=10&category=9&difficul" +
+                        "ty=easy&type=boolean\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
 #line 5
- await testRunner.GivenAsync("I have a running MySQL Container", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+    await testRunner.WhenAsync("User receive a successful response", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 6
- await testRunner.ThenAsync("the database should be accessible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.ThenAsync("the response should contain at least one \"correct_answer\": \"True\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 7
+    await testRunner.AndAsync("print all questions with \"correct_answer\": \"True\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();

@@ -20,19 +20,17 @@ namespace Playwright_SpecFlow.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "2.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("DatabaseContainer")]
-    [NUnit.Framework.CategoryAttribute("MySQL_test")]
-    public partial class DatabaseContainerFeature
+    [NUnit.Framework.DescriptionAttribute("Validate Incorrect Answers")]
+    public partial class ValidateIncorrectAnswersFeature
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
-        private static string[] featureTags = new string[] {
-                "MySQL_test"};
+        private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "DatabaseContainer", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Validate Incorrect Answers", null, global::Reqnroll.ProgrammingLanguage.CSharp, featureTags);
         
-#line 1 "MySQL.feature"
+#line 1 "ReqNroll_incorrect.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
@@ -84,14 +82,14 @@ namespace Playwright_SpecFlow.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("DatabaseContainer")]
-        public async System.Threading.Tasks.Task DatabaseContainer()
+        [NUnit.Framework.DescriptionAttribute("Validate each question has 3 incorrect answers")]
+        public async System.Threading.Tasks.Task ValidateEachQuestionHas3IncorrectAnswers()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("DatabaseContainer", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 4
-this.ScenarioInitialize(scenarioInfo);
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Validate each question has 3 incorrect answers", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 3
+  this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
             {
@@ -100,11 +98,19 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
+#line 4
+    await testRunner.GivenAsync("User send a request to \"https://opentdb.com/api.php?amount=50&category=21&difficu" +
+                        "lty=medium&type=multiple\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
 #line 5
- await testRunner.GivenAsync("I have a running MySQL Container", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+    await testRunner.WhenAsync("User receive the incurrect response", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
 #line hidden
 #line 6
- await testRunner.ThenAsync("the database should be accessible", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+    await testRunner.ThenAsync("each question should have exactly 3 incorrect answers", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+#line 7
+    await testRunner.AndAsync("extract and print \"correct_answer\" for the question \"Which car manufacturer won t" +
+                        "he 2017 24 Hours of Le Mans?\"", ((string)(null)), ((global::Reqnroll.Table)(null)), "And ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
