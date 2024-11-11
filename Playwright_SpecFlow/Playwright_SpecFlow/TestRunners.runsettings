@@ -8,7 +8,8 @@
   </NUnit>
   <!-- General run configuration -->
   <RunConfiguration>
-	 <MaxCpuCount>2</MaxCpuCount>
+	  <!-- Establece el número máximo de pruebas concurrentes en 1 -->
+	  <MaxCpuCount>10</MaxCpuCount>
     <EnvironmentVariables>
       <!-- For debugging selectors, it's recommend to set the following environment variable -->
       <DEBUG>pw:api</DEBUG>

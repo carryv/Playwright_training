@@ -40,21 +40,21 @@ namespace Playwright_SpecFlow.TestContainers
         {
             _rabbitMqContainer = new RabbitMqBuilder()
                 .WithImage("rabbitmq:3.11")  // Usamos la imagen oficial de RabbitMQ
-                .WithPortBinding(5672, 5672)        // Puerto para enviar/recibir mensajes
+                .WithPortBinding(5672, true) // Puerto aleatorio para evitar conflictos
                 .WithUsername("guest")
                 .WithPassword("guest")
-                .WithWaitStrategy(Wait.ForUnixContainer().UntilPortIsAvailable(5672)) /*http://localhost:15672/ */
+                .WithWaitStrategy(Wait.ForUnixContainer().UntilPortIsAvailable(5672))
                 .Build();
 
             await _rabbitMqContainer.StartAsync();  // Iniciar el contenedor
             var host = _rabbitMqContainer.Hostname;
             var port = _rabbitMqContainer.GetMappedPublicPort(5672);
-            RabbitMqConnectionString = $"amqp://guest:guest@{host}:{port}/";  // Guardamos la cadena de conexión
+            RabbitMqConnectionString = $"amqp://guest:guest@{host}:{port}/"; // Guardamos la cadena de conexión
 
             var factory = new ConnectionFactory()
             {
-                HostName = "localhost",
-                Port = _rabbitMqContainer.GetMappedPublicPort(5672),
+                HostName = host,
+                Port = port,
                 UserName = "guest",
                 Password = "guest"
             };
@@ -62,39 +62,46 @@ namespace Playwright_SpecFlow.TestContainers
             Connection = factory.CreateConnection();
             Channel = Connection.CreateModel();
             Channel.QueueDeclare(queue: "test_queue", durable: false, exclusive: false, autoDelete: false, arguments: null);
-
-
         }
 
         public async Task PulsarContainerSetup()
         {
          _pulsarContainer = new ContainerBuilder()
             .WithImage("apachepulsar/pulsar:latest")
-            .WithName("pulsar-test-container")
-            .WithPortBinding(6650, 6650)   
-            .WithWaitStrategy(Wait.ForUnixContainer()
-            .UntilPortIsAvailable(6650))
+            .WithName($"pulsar-test-container-{Guid.NewGuid()}") //Dar nombre distintos a cada contenedor
+            .WithPortBinding(6650, true) // Asigna un puerto aleatorio
+            .WithWaitStrategy(Wait.ForUnixContainer().UntilPortIsAvailable(6650))
             .WithCommand("/bin/bash", "-c", "bin/pulsar standalone")
             .Build();
 
             await _pulsarContainer.StartAsync();
             await _pulsarContainer.ExecAsync(new[] { "/bin/bash", "-c", "bin/pulsar-admin namespaces create public/default" });
+
             var host = _pulsarContainer.Hostname;
-            var port = _pulsarContainer.GetMappedPublicPort(6650);
-            ServiceUrl = $"pulsar://localhost:6650";
+            var port = _pulsarContainer.GetMappedPublicPort(6650); // Obtener el puerto asignado
+            ServiceUrl = $"pulsar://{host}:{port}";
 
         }
 
-
         public async Task TearDown()
         {
-            await _mysqlContainer.StopAsync();
-            await _mysqlContainer.DisposeAsync();
-            await _rabbitMqContainer.StopAsync();
-            await _rabbitMqContainer.DisposeAsync();
-            await _pulsarContainer.StopAsync();
-            await _pulsarContainer.DisposeAsync();
+            if (_mysqlContainer != null)
+            {
+                await _mysqlContainer.StopAsync();
+                await _mysqlContainer.DisposeAsync();
+            }
 
+            if (_rabbitMqContainer != null)
+            {
+                await _rabbitMqContainer.StopAsync();
+                await _rabbitMqContainer.DisposeAsync();
+            }
+
+            if (_pulsarContainer != null)
+            {
+                await _pulsarContainer.StopAsync();
+                await _pulsarContainer.DisposeAsync();
+            }
 
         }
 
