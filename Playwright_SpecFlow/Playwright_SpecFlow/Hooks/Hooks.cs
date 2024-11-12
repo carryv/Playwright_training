@@ -10,6 +10,7 @@ namespace Playwright_SpecFlow.Hooks
     
         private RabbitMQSetup _rabbitMqSetup;
         private ScenarioContext _scenarioContext;
+        private Config _config;
 
 
         public Hooks(RabbitMQSetup rabbitMqSetup) : base()
@@ -23,9 +24,19 @@ namespace Playwright_SpecFlow.Hooks
             //Set container
             await _rabbitMqSetup.RabbitMqContainerSetup();
 
+
         }
 
-     //   [After]
+      /*  [After]
+        public async Task TearDownContainers()
+        {
+            if (_rabbitMqSetup != null)
+            {
+                await _rabbitMqSetup.StopContainer();
+
+            }
+
+        }*/
 
     }
 }

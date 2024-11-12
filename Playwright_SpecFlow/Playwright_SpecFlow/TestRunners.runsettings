@@ -3,7 +3,7 @@
   <!-- NUnit adapter -->  
   <NUnit>
       <NumberOfTestWorkers>24</NumberOfTestWorkers>
-	  <DefaultTimeout>30000</DefaultTimeout>
+	  <DefaultTimeout>50000</DefaultTimeout>
 	  <ParallelScope>All</ParallelScope>  
   </NUnit>
   <!-- General run configuration -->

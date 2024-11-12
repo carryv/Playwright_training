@@ -9,10 +9,6 @@ namespace Playwright_SpecFlow.Support
 {
     public class APIResponse
     {
-       /* APIRequest
-            https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=boolean
-            https://opentdb.com/api.php?amount=50&category=21&difficulty=medium&type=multiple
-       */
         public int response_code { get; set; }
         public List<Question> Results { get; set; }
 

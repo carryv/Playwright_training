@@ -20,15 +20,47 @@ namespace Playwright_SpecFlow.Pages
             _httpClient = new HttpClient();
         }
 
+
+
         // Método para obtener preguntas desde la API
         public async Task<APIResponse> GetApiQuestions(string url)
         {
-            var response = await _httpClient.GetAsync(url);
-            var responseBody = await response.Content.ReadAsStringAsync();
+            try
+            {
+                var response = await _httpClient.GetAsync(url);
 
-            // Deserializar la respuesta en la clase ReqnRollApi
-            return JsonConvert.DeserializeObject<APIResponse>(responseBody);
+                // Validar si la respuesta es exitosa
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"API request failed with status code: {response.StatusCode}");
+                }
+
+                var responseBody = await response.Content.ReadAsStringAsync();
+
+                // Validar si el cuerpo de la respuesta no es vacío
+                if (string.IsNullOrEmpty(responseBody))
+                {
+                    throw new Exception("API response body is empty");
+                }
+
+                // Deserializar la respuesta en la clase APIResponse
+                var apiResponse = JsonConvert.DeserializeObject<APIResponse>(responseBody);
+
+                // Validar que `Results` no sea null
+                if (apiResponse == null || apiResponse.Results == null)
+                {
+                    throw new Exception("Failed to deserialize API response or no results found");
+                }
+
+                return apiResponse;
+            }
+            catch (Exception ex)
+            {
+                TestContext.WriteLine($"Error fetching API data: {ex.Message}");
+                return null;
+            }
         }
+
 
         // Validar si al menos una pregunta tiene "correct_answer" como "True"
         public bool ValidateCorrectAnswerExists(APIResponse apiResponse)

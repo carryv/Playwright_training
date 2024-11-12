@@ -23,13 +23,34 @@ namespace Playwright_SpecFlow.StepDefinitions
         [Given("User send a request to {string}")]
         public async Task GivenUserSendARequestTo(string Url)
         {
-            // Llamamos al método que hace la solicitud GET
-            _apiResponse = await _apiPage.GetApiQuestions(Url);
+            //Implementar bucle de reintentos para obterner una respuesta valida
+            int maxRetries = 3;
+            int retryCount = 0;
 
+            while (retryCount < maxRetries)
+            {
+                _apiResponse = await _apiPage.GetApiQuestions(Url);
+
+                if (_apiResponse != null && _apiResponse.Results != null && _apiResponse.Results.Any())
+                {
+                    break;
+                }
+
+                TestContext.WriteLine($"Attempt {retryCount + 1}: No data found. Retrying...");
+                await Task.Delay(2000); // Esperar 2 segundos antes de reintentar
+                retryCount++;
+            }
+
+            Assert.IsNotNull(_apiResponse, "Failed to fetch data from the API after multiple attempts.");
+            Assert.IsNotNull(_apiResponse.Results, "Data from the API response results are null.");
+            Assert.IsNotEmpty(_apiResponse.Results, "No questions found in data from the API response.");
         }
+
+    
         [When("User check the API response for questions with {string} as {string}")]
         public void WhenUserReceiveASuccessfulResponse(string key, string value)
         {
+
             //Validar respuesta
             bool exists = _apiPage.ValidateCorrectAnswerExists(_apiResponse);
 

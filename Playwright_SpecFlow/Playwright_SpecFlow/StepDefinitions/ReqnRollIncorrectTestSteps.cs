@@ -26,9 +26,29 @@ namespace Playwright_SpecFlow.StepDefinitions
         [Given("User sends a request to {string}")]
         public async Task GivenUserSendsARequestTo(string Url)
         {
-            _apiResponse = await _apiPage.GetApiQuestions(Url);
-            Assert.IsNotNull(_apiResponse, "Failed to fetch data from the API.");
+            //Implementar bucle de reintentos para obterner una respuesta valida
+            int maxRetries = 3;
+            int retryCount = 0;
+
+            while (retryCount < maxRetries)
+            {
+                _apiResponse = await _apiPage.GetApiQuestions(Url);
+
+                if (_apiResponse != null && _apiResponse.Results != null && _apiResponse.Results.Any())
+                {
+                    break;
+                }
+
+                TestContext.WriteLine($"Attempt {retryCount + 1}: No data found. Retrying...");
+                await Task.Delay(2000); // Esperar 2 segundos antes de reintentar
+                retryCount++;
+            }
+
+            Assert.IsNotNull(_apiResponse, "Failed to fetch data from the API after multiple attempts.");
+            Assert.IsNotNull(_apiResponse.Results, "Data from the API response results are null.");
+            Assert.IsNotEmpty(_apiResponse.Results, "No questions found in data from the API response.");
         }
+    
 
         [When("User receives the API response")]
         public async Task WhenUserReceivesTheAPIResponse()
